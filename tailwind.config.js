@@ -13,6 +13,7 @@ module.exports = {
         fontFamily: {
             sans: ['Open Sans', 'Poppins'],
             poppins: ['Poppins', 'Open Sans'],
+            amiri: ['Amiri', 'Open Sans'],
         },
     },
   },
