@@ -44,6 +44,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ### Screenshots
 
-![image](https://user-images.githubusercontent.com/56413673/125162201-2b2b4a00-e1a9-11eb-9b0a-2e2b2e2e2b1a.png)
+![image](./preview.png)
 
 > Thanks for reading! If you liked this project, please give it a ⭐️.
