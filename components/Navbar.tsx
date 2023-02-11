@@ -25,9 +25,9 @@ const Navbar = (props: Props) => {
           <div>
             <a
               href="#"
-              className="text-xl font-bold font-poppins text-gray-700"
+              className="text-2xl font-bold font-poppins text-gray-600"
             >
-              Ashik Mahmud
+              Ashik
             </a>
           </div>
 
