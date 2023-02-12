@@ -1,6 +1,4 @@
 import Image from "next/image";
-import React from "react";
-import { BsFacebook, BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
 
 type Props = {};
 
@@ -10,11 +8,13 @@ const Hero = (props: Props) => {
       <div className="container">
         {/* header text */}
         <div className="text-center">
-          <h1 className="text-4xl font-semibold font-amiri text-gray-700">
-            Ashik Mahmud <br /> Web & MERN Stack Developer <br />
-            based in Bangladesh
+          <h1 className="text-3xl font-semibold font-amiri text-gray-700">
+            <span className="text-5xl">Ashik Mahmud</span> <br />
+            <span className="text-gray-600">
+              Web & MERN Stack Developer <br />
+              based in Bangladesh
+            </span>
           </h1>
-          <p className="text-gray-500 text-lg">a full-stack web developer</p>
         </div>
 
         {/* main hero content */}

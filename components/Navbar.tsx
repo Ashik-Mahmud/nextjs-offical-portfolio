@@ -1,4 +1,5 @@
 type Props = {};
+import Link from "next/link";
 import { BsFacebook, BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
 
 const Navbar = (props: Props) => {
@@ -10,25 +11,30 @@ const Navbar = (props: Props) => {
           <menu>
             <ul className="flex items-center gap-4 uppercase text-sm">
               <li>
-                <a href="#" className="font-semibold">
+                <Link href="/portfolios" className="font-semibold">
                   Works
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="font-semibold">
+                <Link href="/skills" className="font-semibold">
+                  Skills
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="font-semibold">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </menu>
           {/* logo */}
           <div>
-            <a
-              href="#"
+            <Link
+              href="/"
               className="text-2xl font-bold font-poppins text-gray-600"
             >
               Ashik
-            </a>
+            </Link>
           </div>
 
           {/* social links */}
