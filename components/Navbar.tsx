@@ -37,7 +37,7 @@ const Navbar = (props: Props) => {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="font-semibold">
+                <Link href="/contact" className="font-semibold">
                   Contact
                 </Link>
               </li>
