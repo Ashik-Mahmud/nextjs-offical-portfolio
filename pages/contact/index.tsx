@@ -12,7 +12,7 @@ const Contact = (props: Props) => {
       </Head>
       <div className="container">
         <SectionTitle title="Ping Me for Works/Query" />
-        <div className="contact-content grid grid-cols-2 gap-5 mt-5 font-amiri">
+        <div className="contact-content grid grid-cols-2 gap-10 mt-5 font-amiri">
           <div className="contact-form">
             <form
               action=""

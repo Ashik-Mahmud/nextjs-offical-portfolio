@@ -16,28 +16,28 @@ const Navbar = (props: Props) => {
             <ul className="flex items-center gap-4 uppercase text-sm">
               {!isHome && (
                 <li>
-                  <Link href="/" className="font-semibold">
+                  <Link href="/" className="font-medium">
                     About
                   </Link>
                 </li>
               )}
               <li>
-                <Link href="/portfolios" className="font-semibold">
+                <Link href="/portfolios" className="font-medium">
                   Works
                 </Link>
               </li>
               <li>
-                <Link href="/skills" className="font-semibold">
+                <Link href="/skills" className="font-medium">
                   Skills
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="font-semibold">
+                <Link href="/services" className="font-medium">
                   Offers
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="font-semibold">
+                <Link href="/contact" className="font-medium">
                   Contact
                 </Link>
               </li>
