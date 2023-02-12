@@ -10,7 +10,7 @@ const SectionTitle = ({ title, subTitle }: Props) => {
         {title}
       </h1>
       <p>{subTitle || " This is the section for particular Page"}</p>
-      <div className="line w-full h-[2px] from-gray-400 bg-gradient-to-r  to-gray-100 mt-3"></div>
+      <div className="line w-full h-[2px] from-gray-200 bg-gradient-to-r  to-gray-100 mt-3"></div>
     </div>
   );
 };
