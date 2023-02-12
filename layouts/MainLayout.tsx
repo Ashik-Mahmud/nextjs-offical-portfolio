@@ -1,7 +1,16 @@
-type Props = {};
+import Navbar from "@/components/Navbar";
 
-const MainLayout = (props: Props) => {
-  return <div>MainLayout</div>;
+type Props = {
+  children: React.ReactNode;
+};
+
+const MainLayout = ({ children }: Props) => {
+  return (
+    <div>
+      <Navbar />
+      {children}
+    </div>
+  );
 };
 
 export default MainLayout;
