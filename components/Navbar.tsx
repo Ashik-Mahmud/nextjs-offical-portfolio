@@ -1,15 +1,26 @@
 type Props = {};
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { BsFacebook, BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
 
 const Navbar = (props: Props) => {
+  const location = useRouter();
+  const { pathname } = location;
+  const isHome = pathname === "/";
   return (
     <nav className="font-sans py-2">
       <div className="container">
         <div className="flex items-center justify-between">
           {/* menus */}
-          <menu>
+          <menu className="flex items-center gap-8 font-poppins">
             <ul className="flex items-center gap-4 uppercase text-sm">
+              {!isHome && (
+                <li>
+                  <Link href="/" className="font-semibold">
+                    About
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link href="/portfolios" className="font-semibold">
                   Works
@@ -21,20 +32,42 @@ const Navbar = (props: Props) => {
                 </Link>
               </li>
               <li>
+                <Link href="/services" className="font-semibold">
+                  Offers
+                </Link>
+              </li>
+              <li>
                 <Link href="#" className="font-semibold">
                   Contact
                 </Link>
               </li>
             </ul>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://drive.google.com/file/d/1tGxrjK81idE2-t46wxI4ecXm5HmsvzRo/view?usp=share_link"
+                target={"_blank"}
+                rel="noreferrer"
+                className="hover:underline text-sm font-semibold underline text-gray-600"
+                download={"Ashik Mahmud Resume"}
+              >
+                View Resume
+              </a>
+              <a
+                href="https://www.showwcase.com/ashik-mahmud"
+                target={"_blank"}
+                rel="noreferrer"
+                className="hover:underline text-sm font-semibold  text-gray-600"
+              >
+                View Showcase
+              </a>
+            </div>
           </menu>
           {/* logo */}
           <div>
             <Link
               href="/"
               className="text-2xl font-bold font-poppins text-gray-600"
-            >
-              Ashik
-            </Link>
+            ></Link>
           </div>
 
           {/* social links */}
