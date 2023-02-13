@@ -1,4 +1,5 @@
 import DashboardLayout from "@/components/layouts/DashboardLayout";
+import Link from "next/link";
 import { BiEdit, BiTrash } from "react-icons/bi";
 
 type Props = {};
@@ -11,14 +12,17 @@ const SkillsPage = (props: Props) => {
           <h2 className="text-2xl font-bold my-2 font-amiri">
             Skills pages Customization
           </h2>
-          <button className="px-3 bg-blue-100 text-blue-600 p-2">
+          <Link
+            href={`/dashboard/skills/add-skill`}
+            className="px-3 bg-blue-100 text-blue-600 p-2"
+          >
             Add Skill
-          </button>
+          </Link>
         </div>
         <div className="content my-8 px-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 font-amiri">
           {/* frontend dev */}
           <div className="flex flex-col gap-3 shadow p-3 bg-[#ffffffad] backdrop-blur-sm">
-            <h3 className="text-xl font-bold">Frontend Development</h3>
+            <h3 className="text-xl font-bold">Frontend Tools</h3>
             <div>
               <table className="table w-full text-left">
                 <thead className="bg-gray-100">
@@ -56,7 +60,7 @@ const SkillsPage = (props: Props) => {
           </div>
           {/* backend dev */}
           <div className="flex flex-col gap-3 shadow p-3 bg-[#ffffffad] backdrop-blur-sm">
-            <h3 className="text-xl font-bold">Backend Development</h3>
+            <h3 className="text-xl font-bold">Backend Tools</h3>
             <div>
               <table className="table w-full text-left">
                 <thead className="bg-gray-100">
@@ -94,7 +98,7 @@ const SkillsPage = (props: Props) => {
           </div>
           {/* database dev */}
           <div className="flex flex-col gap-3 shadow p-3 bg-[#ffffffad] backdrop-blur-sm">
-            <h3 className="text-xl font-bold">Database Development</h3>
+            <h3 className="text-xl font-bold">Database Tools</h3>
             <div>
               <table className="table w-full text-left">
                 <thead className="bg-gray-100">
@@ -132,7 +136,7 @@ const SkillsPage = (props: Props) => {
           </div>
           {/* database dev */}
           <div className="flex flex-col gap-3 shadow p-3 bg-[#ffffffad] backdrop-blur-sm">
-            <h3 className="text-xl font-bold">Others Development</h3>
+            <h3 className="text-xl font-bold">Others Tools</h3>
             <div>
               <table className="table w-full text-left">
                 <thead className="bg-gray-100">
