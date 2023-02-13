@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 import { BiGridAlt } from "react-icons/bi";
 import Sidebar from "./Sidebar";
@@ -22,9 +23,18 @@ const DashboardLayout = ({ children }: Props) => {
         {/* main content here */}
         <main className="col-span-10 p-2 mx-4">
           <div className="dashboard-header flex items-center justify-between p-4 py-3 bg-[#ffffff3f] border rounded-[0rem]  backdrop-blur-md">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <BiGridAlt size={25} />{" "}
-              <h1 className="text-xl font-bold">Dashboard</h1>
+            <div className="flex items-center gap-5">
+              <div className="flex items-center gap-2 cursor-pointer">
+                <BiGridAlt size={25} />{" "}
+                <h1 className="text-xl font-bold">Dashboard</h1>
+              </div>
+              <Link
+                href="/"
+                target={"_blank"}
+                className="bg-blue-50 text-blue-500 px-4 rounded py-1 font-amiri"
+              >
+                View Site
+              </Link>
             </div>
 
             {/* quick access search bar */}

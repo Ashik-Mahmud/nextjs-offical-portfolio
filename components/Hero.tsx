@@ -5,12 +5,12 @@ type Props = {};
 const Hero = (props: Props) => {
   return (
     <section>
-      <div className="container">
+      <div className="container font-amiri">
         {/* header text */}
-        <div className="text-center">
-          <h1 className="text-3xl font-semibold font-amiri text-gray-700">
-            <span className="text-5xl">Ashik Mahmud</span> <br />
-            <span className="text-gray-600">
+        <div className="text-center py-3">
+          <h1 className="text-3xl font-semibold  text-gray-700">
+            <span className="text-7xl font">Ashik Mahmud</span> <br />
+            <span className="text-gray-600 font-poppins">
               Web & MERN Stack Developer <br />
               based in Bangladesh
             </span>
