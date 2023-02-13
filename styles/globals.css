@@ -32,7 +32,7 @@ a {
 
 /* classes */
 .container {
-  max-width: min(100%, 1200px);
+  max-width: min(100%, 1280px);
   margin-inline: auto;
   padding: 1rem;
 }

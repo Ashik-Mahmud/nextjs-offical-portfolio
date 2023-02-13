@@ -6,8 +6,8 @@ type Props = {};
 const LoginPage = (props: Props) => {
   return (
     <div>
-      <div className="container font-amiri grid place-items-center">
-        <div className="login-content my-10 p-10 bg-[#ffffff67] backdrop-blur-sm border border-gray-100 shadow-sm">
+      <div className="container font-amiri grid place-items-center h-screen">
+        <div className="login-content my-10 p-10 bg-[#ffffff67] backdrop-blur-sm border border-gray-100 shadow-sm ">
           <div className="login-logo">
             <Link className="font-bold text-3xl my-2 mb-5 block " href="/">
               Ashik <span className="text-green-500">Portfolio</span>
@@ -52,5 +52,7 @@ const LoginPage = (props: Props) => {
     </div>
   );
 };
+
+LoginPage.getLayout = (page: React.ReactNode) => <>{page}</>;
 
 export default LoginPage;
