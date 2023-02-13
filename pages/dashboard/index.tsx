@@ -1,13 +1,13 @@
-import DashboardLayout from "@/layouts/DashboardLayout";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 import React from "react";
 
 type Props = {};
 
 const Dashboard = (props: Props) => {
-  return <div>Dashboard</div>;
+  return <>Dashboard</>;
 };
 
-const getLayout = (page: React.ReactNode) => {
+Dashboard.getLayout = (page: React.ReactNode) => {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 
