@@ -12,7 +12,7 @@ const AboutPage = (props: Props) => {
       </h2>
 
       {/* edit name or tagline */}
-      <div className="content my-8">
+      <div className="content my-8 px-5">
         <form action="" className="flex flex-col gap-3">
           <div className="header flex flex-col gap-3">
             <span className="text-xl">

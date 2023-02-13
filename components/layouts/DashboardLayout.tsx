@@ -15,14 +15,14 @@ const DashboardLayout = ({ children }: Props) => {
         <title>Dashboard</title>
         <meta name="description" content="Dashboard" />
       </Head>
-      <div className="grid grid-cols-12 gap-0">
+      <div className="">
         {/* sidebar here */}
-        <aside className="col-span-2 bg-[#ffffff3f] border rounded-r-[0rem] shadow backdrop-blur-md h-screen">
+        <aside className="sidebar col-span-2 bg-[#ffffff3f] border rounded-r-[0rem] shadow backdrop-blur-md h-screen">
           <Sidebar />
         </aside>
         {/* main content here */}
-        <main className="col-span-10 p-2 mx-4">
-          <div className="dashboard-header flex items-center justify-between p-4 py-3 bg-[#ffffff3f] border rounded-[0rem]  backdrop-blur-md">
+        <main className="main-content p-2 mx-4">
+          <div className="dashboard-header flex items-center justify-between p-4 py-3 bg-[#ffffff3f] border rounded-[0rem]  backdrop-blur-md sticky top-2 z-50">
             <div className="flex items-center gap-5">
               <div className="flex items-center gap-2 cursor-pointer">
                 <BiGridAlt size={25} />{" "}
@@ -65,7 +65,7 @@ const DashboardLayout = ({ children }: Props) => {
               </div>
             </div>
           </div>
-          <div className="content bg-[#ffffff49] backdrop-blur-sm p-4 my-2 w-full shadow-sm border border-gray-100 rounded">
+          <div className=" bg-[#ffffff49] backdrop-blur-sm p-4 my-2  shadow-sm border border-gray-100 rounded">
             {children}
           </div>
         </main>
