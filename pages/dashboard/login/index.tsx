@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
@@ -6,6 +7,12 @@ type Props = {};
 const LoginPage = (props: Props) => {
   return (
     <div>
+      <Head>
+        <title>Login</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="Ashik Portfolios" content="Login page" />
+      </Head>
       <div className="container font-amiri grid place-items-center">
         <div className="login-content my-10 p-10 bg-[#ffffff67] backdrop-blur-sm border border-gray-100 shadow-sm">
           <div className="login-logo">
@@ -52,5 +59,7 @@ const LoginPage = (props: Props) => {
     </div>
   );
 };
+
+LoginPage.getLayout = (page: React.ReactNode) => <>{page}</>;
 
 export default LoginPage;
