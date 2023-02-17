@@ -1,7 +1,7 @@
 type Props = {};
 import Link from "next/link";
 import { AiOutlineUser } from "react-icons/ai";
-import { BiBook } from "react-icons/bi";
+import { BiBook, BiCertification } from "react-icons/bi";
 import { BsFillGearFill } from "react-icons/bs";
 import { CiBoxes } from "react-icons/ci";
 import { GiSkills } from "react-icons/gi";
@@ -37,6 +37,11 @@ const Sidebar = (props: Props) => {
       name: "Portfolios ",
       icon: <IoGitNetworkSharp />,
       link: "/dashboard/portfolio",
+    },
+    {
+      name: "Achievements ",
+      icon: <BiCertification />,
+      link: "/dashboard/achievements",
     },
 
     {
