@@ -32,6 +32,11 @@ const Navbar = (props: Props) => {
                 </Link>
               </li>
               <li>
+                <Link href="/achievements" className="font-medium">
+                  Achievements
+                </Link>
+              </li>
+              <li>
                 <Link href="/services" className="font-medium">
                   Offers
                 </Link>
