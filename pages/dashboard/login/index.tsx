@@ -7,19 +7,18 @@ type Props = {};
 const LoginPage = (props: Props) => {
   return (
     <div>
-<<<<<<< HEAD
       <div className="container font-amiri grid place-items-center h-screen">
         <div className="login-content my-10 p-10 bg-[#ffffff67] backdrop-blur-sm border border-gray-100 shadow-sm ">
-=======
-      <Head>
-        <title>Login</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="Ashik Portfolios" content="Login page" />
-      </Head>
-      <div className="container font-amiri grid place-items-center">
-        <div className="login-content my-10 p-10 bg-[#ffffff67] backdrop-blur-sm border border-gray-100 shadow-sm">
->>>>>>> 4fbe5f500b1e6e8fa266a1e4e5c695f7c950b334
+          <Head>
+            <title>Login</title>
+            <link rel="icon" href="/favicon.ico" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+            <meta name="Ashik Portfolios" content="Login page" />
+          </Head>
+
           <div className="login-logo">
             <Link className="font-bold text-3xl my-2 mb-5 block " href="/">
               Ashik <span className="text-green-500">Portfolio</span>
