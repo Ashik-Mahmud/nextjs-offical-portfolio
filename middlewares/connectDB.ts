@@ -8,12 +8,11 @@ const connectDB =
       return handler(req, res);
     }
     // Use new db connection
+    mongoose.set("strictQuery", true);
     await mongoose.connect(
       process.env.MONGO_URI as any,
       {
         useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
         useNewUrlParser: true,
       } as any
     );

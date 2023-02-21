@@ -1,6 +1,17 @@
+import connectDB from "@/middlewares/connectDB";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+function handler(req: NextApiRequest, res: NextApiResponse) {
   // ...
-  res.status(200).json({ message: "Success!" });
+  const method = req.method;
+  if (method === "POST") {
+    const { email, password, name } = req.body;
+    console.log(email, password, name);
+  } else {
+    res.status(404).json({
+      message: "Route not found",
+    });
+  }
 }
+
+export default connectDB(handler);
