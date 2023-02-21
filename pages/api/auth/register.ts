@@ -1,12 +1,35 @@
 import connectDB from "@/middlewares/connectDB";
+import User from "@/models/userModel";
+import GenerateToken from "@/utils/GenerateToken";
+import { hashedPassword } from "@/utils/Password";
 import { NextApiRequest, NextApiResponse } from "next";
 
-function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   // ...
   const method = req.method;
   if (method === "POST") {
     const { email, password, name } = req.body;
-    console.log(email, password, name);
+    const isHas = await User.findOne({ email });
+    if (isHas) {
+      return res.status(304).send({
+        success: false,
+        message: `${email} is not register yet.`,
+      });
+    }
+
+    const newPassword = await hashedPassword(password);
+    const user = new User({
+      name,
+      email,
+      password: newPassword,
+    });
+    await user.save();
+    const token = await GenerateToken(user?._id);
+    res.status(202).send({
+      success: true,
+      message: `${email} is registered successfully`,
+      token,
+    });
   } else {
     res.status(404).json({
       message: "Route not found",
