@@ -1,4 +1,5 @@
 import DashboardLayout from "@/components/layouts/DashboardLayout";
+import Image from "next/image";
 
 type Props = {};
 
@@ -9,10 +10,12 @@ const ProfilePage = (props: Props) => {
         <h3 className="text-xl font-bold">Profile Page</h3>
       </div>
       <div className="profile-image">
-        <img
+        <Image
           className="w-32 h-32 rounded-full object-cover border"
           src="/assets/images/me.jpg"
           alt="profile"
+          width={128}
+          height={128}
         />
         <h3 className="text-xl font-bold my-3">
           Ashik Mahmud{" "}

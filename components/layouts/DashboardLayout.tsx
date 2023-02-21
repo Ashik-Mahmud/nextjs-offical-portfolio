@@ -62,7 +62,7 @@ const DashboardLayout = ({ children }: Props) => {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <button className="bg-red-100 text-red-500 text-white px-2 py-1 rounded-md">
+                <button className="bg-red-100 text-red-500  px-2 py-1 rounded-md">
                   Logout
                 </button>
               </div>
