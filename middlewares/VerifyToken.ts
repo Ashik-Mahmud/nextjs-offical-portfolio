@@ -1,26 +1,29 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
-const VerifyToken = async (req: NextApiRequest | any, res: NextApiResponse) => {
-  const token = req.headers.authorization?.split(" ")[1];
+import { NextApiRequest, NextApiResponse } from "next";
+
+const VerifyToken = (
+  req: NextApiRequest | any,
+  res: NextApiResponse,
+  next: any
+) => {
+  const token = req.headers?.authorization?.split(" ")[1];
   if (!token) {
-    return res.status(404).send({
-      success: false,
-      message: `undefined token`,
-    });
+    return res.status(403).json({ auth: false, message: "No token provided." });
   }
   jwt.verify(
-    token,
-    process.env.JWT_SECRET as any,
-    function (err: any, decoded: any) {
-      req.user = decoded;
+    token as string,
+    process.env.JWT_SECRET as string,
+    function (err, decoded: any) {
       if (err) {
-        return res.status(404).send({
-          success: false,
-          message: `Unauthorized access`,
-          err,
-        });
+        return res
+          .status(500)
+          .json({ auth: false, message: "Failed to authenticate token." });
       }
+      req.userId = decoded.id;
+
+      next();
     }
-  );
+  ) as any;
 };
+
 export default VerifyToken;
