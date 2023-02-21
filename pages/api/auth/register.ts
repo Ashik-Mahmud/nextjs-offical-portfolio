@@ -11,9 +11,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { email, password, name } = req.body;
     const isHas = await User.findOne({ email });
     if (isHas) {
-      return res.status(304).send({
+      return res.status(404).send({
         success: false,
-        message: `${email} is not register yet.`,
+        message: `${email} is already registered.`,
       });
     }
 
