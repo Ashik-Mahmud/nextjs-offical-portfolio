@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BiGridAlt } from "react-icons/bi";
@@ -48,10 +49,12 @@ const DashboardLayout = ({ children }: Props) => {
 
             <div className="flex items-center gap-2 mr-4">
               <div className="flex items-center gap-2">
-                <img
+                <Image
                   src="/assets/images/me.jpg"
                   alt="profile"
                   className="w-8 h-8 rounded-full object-cover"
+                  width={40}
+                  height={40}
                 />
                 <div className="flex flex-col items-start">
                   <span className="text-sm font-bold">Ashik Mahmud</span>

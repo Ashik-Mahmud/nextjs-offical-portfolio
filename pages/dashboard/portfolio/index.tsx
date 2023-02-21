@@ -17,21 +17,19 @@ const PortfolioPage = (props: Props) => {
           Add Portfolio
         </Link>
       </div>
-      <div className="overflow-x-auto my-3 bg-white p-2">
+      <div className="overflow-x-auto my-3 bg-white p-2 font-amiri">
         <table className="table w-full text-left">
           <thead className=" bg-gray-100">
             <tr className="">
-              <th className="p-3 font-medium">SL No</th>
               <th className="p-3 font-medium">Portfolio Title</th>
               <th className="p-3 font-medium">Portfolio Category</th>
               <th className="p-3 font-medium">Portfolio Description</th>
-              <th className="p-3 font-medium">Portfolio Links</th>
-              <th className="p-3 font-medium">Portfolio Action</th>
+              <th className="p-3 font-medium"> Links</th>
+              <th className="p-3 font-medium"> Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr className=" border-b">
-              <td className="p-2">1</td>
+            <tr className=" border-b hover:bg-gray-50">
               <td className="p-2">
                 <div className="flex items-center gap-2">
                   <img
