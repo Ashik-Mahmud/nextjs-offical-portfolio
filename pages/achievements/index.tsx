@@ -1,3 +1,4 @@
+import AchievementCard from "@/components/achievement/achievementCard";
 import SectionTitle from "@/components/SectionTitle";
 import Head from "next/head";
 
@@ -11,6 +12,9 @@ const AchievementPage = (props: Props) => {
       </Head>
       <div className="container">
         <SectionTitle title="Achievements" />
+        <div className="achievements-container mt-5 ">
+          <AchievementCard />
+        </div>
       </div>
     </div>
   );

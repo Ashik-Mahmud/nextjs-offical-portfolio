@@ -1,4 +1,5 @@
 import DashboardLayout from "@/components/layouts/DashboardLayout";
+import Image from "next/image";
 import Link from "next/link";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
 
@@ -21,20 +22,35 @@ const AchievementsPage = (props: Props) => {
           <thead className="bg-gray-100">
             <tr>
               <th className="p-3 font-medium">SL No</th>
-              <th className="p-3 font-medium">Achievements Title</th>
-              <th className="p-3 font-medium">Achievements Category</th>
-              <th className="p-3 font-medium">Achievements Description</th>
-              <th className="p-3 font-medium">Achievements Links</th>
-              <th className="p-3 font-medium">Achievements Action</th>
+              <th className="p-3 font-medium"> image</th>
+              <th className="p-3 font-medium"> title</th>
+              <th className="p-3 font-medium"> Description</th>
+              <th className="p-3 font-medium"> Links</th>
+              <th className="p-3 font-medium"> Action</th>
             </tr>
           </thead>
           <tbody>
             <tr className=" border-b">
               <td className="p-2">1</td>
-              <td className="p-2">Achivements Name</td>
-              <td className="p-2">Achivements Category</td>
+              <td className="p-2">
+                <img
+                  className="w-14 h-14 rounded object-cover border"
+                  src="https://raw.githubusercontent.com/Ashik-Mahmud/nextjs-official-portfolio/main/preview.png"
+                  alt="profile"
+                />
+              </td>
+              <td className="p-2">Programming Hero Certificate</td>
               <td className="p-2">Achivements Description</td>
-              <td className="p-2">Achivements Links</td>
+              <td className="p-2">
+                <div className="flex flex-wrap gap-1">
+                  <a
+                    className="bg-gray-100  p-1 border rounded  text-xs "
+                    href="https://programming-hero.com/"
+                  >
+                    Certificate
+                  </a>
+                </div>
+              </td>
               <td className="p-2">
                 <div className="flex items-center gap-2">
                   <Link
