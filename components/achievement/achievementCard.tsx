@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 type Props = {};
@@ -5,14 +6,16 @@ type Props = {};
 const AchievementCard = (props: Props) => {
   return (
     <div className="flex items-start justify-start gap-7 p-3 my-2 bg-[#ffffffae] backdrop-blur-md rounded border">
-      <div className="flex items-center justify-between w-60">
+      <div className="flex items-center justify-between w-40">
         <img
           className="w-40 h-40 rounded object-cover border"
           src="https://raw.githubusercontent.com/Ashik-Mahmud/nextjs-official-portfolio/main/preview.png"
           alt="profile"
+          width={200}
+          height={200}
         />
       </div>
-      <div className="flex flex-wrap gap-1 mt-2 flex-col items-start">
+      <div className="flex flex-wrap gap-1 mt-2 flex-col items-start flex-1">
         <div className="flex flex-col gap-1">
           <h3 className="text-lg font-medium">Programming Hero Certificate</h3>
           <p className="text-sm text-gray-500">
