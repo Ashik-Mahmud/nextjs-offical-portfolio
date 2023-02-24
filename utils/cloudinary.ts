@@ -7,12 +7,6 @@ cloudinary.config({
   secure: true,
 });
 
-/* 
-CLOUD_NAME=dbkbh9uvh
-CLOUD_API_KEY=934379789638192
-CLOUD_API_SECRET=sOvHI-I4WunI6zLm5_sBllRREqY
- */
-
 export const uploadImage = async (file: any, path: string) => {
   const result = await cloudinary.uploader.upload(file, {
     folder: "portfolios/" + path + "/", // folder name
