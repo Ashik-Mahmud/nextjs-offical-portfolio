@@ -1,36 +1,38 @@
 import connectDB from "@/middlewares/connectDB";
 import VerifyToken from "@/middlewares/VerifyToken";
-import Offer from "@/models/offerMode";
+import Achievement from "@/models/achievementModel";
 import apiRoute from "@/utils/apiRoute";
+import { deleteImage } from "@/utils/cloudinary";
 import { NextApiRequest, NextApiResponse } from "next";
 
 apiRoute.use(VerifyToken);
 apiRoute.get(async (req: NextApiRequest | any, res: NextApiResponse) => {
-  const { offerId, type } = req.query;
+  const { achievementId, type } = req.query;
   const userId = req.userId;
 
   try {
-    const offer = await Offer.findOne({
+    const achievement = await Achievement.findOne({
       user: userId,
-      _id: offerId,
+      _id: achievementId,
     });
 
-    if (!offer) {
+    if (!achievement) {
       return res.status(404).send({
         success: false,
-        message: "Offer does not exist",
+        message: "achievement does not exist",
       });
     }
 
     if (type === "delete") {
-      await offer.remove();
+      await deleteImage(achievement?.image?.public_id, "achievements");
+      await Achievement.remove();
       res.status(202).send({
         success: true,
-        message: "Offer successfully deleted",
+        message: "Achievement successfully deleted",
       });
     } else {
-      const updateOffer = await Offer.findOneAndUpdate(
-        { _id: offerId, user: userId },
+      const updateAchievement = await Achievement.findOneAndUpdate(
+        { _id: achievementId, user: userId },
         {
           ...req.body,
         },
@@ -40,8 +42,8 @@ apiRoute.get(async (req: NextApiRequest | any, res: NextApiResponse) => {
       );
       res.status(202).send({
         success: true,
-        message: "update offer successfully done",
-        offer: updateOffer,
+        message: "update achievementId successfully done",
+        achievements: updateAchievement,
       });
     }
   } catch (err: any) {
