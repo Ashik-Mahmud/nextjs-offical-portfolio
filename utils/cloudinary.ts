@@ -17,8 +17,8 @@ export const uploadImage = async (file: any, path: string) => {
 };
 
 export const deleteImage = async (public_id: string, path: string) => {
-  const result = await cloudinary.uploader.destroy(
-    "portfolios/" + path + "/" + public_id
-  );
+  const result = await cloudinary.uploader.destroy(public_id, {
+    folder: "portfolios/" + path + "/", // folder name
+  });
   return result;
 };

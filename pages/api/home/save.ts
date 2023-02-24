@@ -2,7 +2,7 @@ import connectDB from "@/middlewares/connectDB";
 import VerifyToken from "@/middlewares/VerifyToken";
 import Home from "@/models/homeModel";
 import apiRoute from "@/utils/apiRoute";
-import { uploadImage } from "@/utils/cloudinary";
+import { deleteImage, uploadImage } from "@/utils/cloudinary";
 import upload from "@/utils/multer";
 import bodyParser from "body-parser";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -26,6 +26,7 @@ apiRoute.post(async (req: NextApiRequest | any, res: NextApiResponse) => {
   };
 
   if (file) {
+    await deleteImage(home.heroImage.url, "home");
     const image = await uploadImage(file.path, "home");
     heroImage.url = image.secure_url;
     heroImage.public_id = image.public_id;

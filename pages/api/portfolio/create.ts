@@ -14,6 +14,7 @@ apiRoute.use(bodyParser.urlencoded({ extended: true }));
 apiRoute.use(bodyParser.json());
 apiRoute.post(async (req: NextApiRequest | any, res: NextApiResponse) => {
   try {
+    const userId = req.userId;
     const data = JSON.parse(req.body.data);
     const hasPortfolio = await Portfolio.findOne({
       title: data.title,
@@ -36,7 +37,7 @@ apiRoute.post(async (req: NextApiRequest | any, res: NextApiResponse) => {
       image.public_id = uploadedImage.public_id;
     }
 
-    const portfolio = await Portfolio.create({ ...data, image });
+    const portfolio = await Portfolio.create({ ...data, image, user: userId });
     res.status(202).send({
       success: true,
       message: "create new portfolio",
