@@ -1,10 +1,10 @@
 import connectDB from "@/middlewares/connectDB";
 import VerifyToken from "@/middlewares/VerifyToken";
-import apiRoute from "@/utils/apiRoute";
 import Home from "@/models/homeModel";
+import apiRoute from "@/utils/apiRoute";
+import { uploadImage } from "@/utils/cloudinary";
 import bodyParser from "body-parser";
 import { NextApiRequest, NextApiResponse } from "next";
-import { uploadImage } from "@/utils/cloudinary";
 
 const multer = require("multer");
 
