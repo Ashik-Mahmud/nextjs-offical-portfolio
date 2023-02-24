@@ -3,26 +3,9 @@ import VerifyToken from "@/middlewares/VerifyToken";
 import Home from "@/models/homeModel";
 import apiRoute from "@/utils/apiRoute";
 import { uploadImage } from "@/utils/cloudinary";
+import upload from "@/utils/multer";
 import bodyParser from "body-parser";
 import { NextApiRequest, NextApiResponse } from "next";
-
-const multer = require("multer");
-
-const storage = multer.diskStorage({});
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5,
-  },
-
-  fileFilter: (req: NextApiRequest | any, file: any, cb: any) => {
-    if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
-      cb(null, true);
-    } else {
-      cb(null, false);
-    }
-  },
-});
 
 // protect the route
 apiRoute.use(VerifyToken);
