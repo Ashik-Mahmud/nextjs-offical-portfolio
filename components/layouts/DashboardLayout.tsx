@@ -1,3 +1,4 @@
+import { useAppContext } from "@/context/AppContext";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +11,8 @@ type Props = {
 };
 
 const DashboardLayout = ({ children }: Props) => {
+  const { auth } = useAppContext();
+  console.log(auth);
   return (
     <div>
       <Head>

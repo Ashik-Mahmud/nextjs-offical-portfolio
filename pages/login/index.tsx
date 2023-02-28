@@ -1,5 +1,10 @@
+import { useLoginMutation } from "@/apis/authenticationApi";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 type Props = {};
 
@@ -10,11 +15,33 @@ const LoginPage = (props: Props) => {
     register,
     formState: { errors },
   } = useForm();
+  const [Login, { data, isLoading, error }] = useLoginMutation<any>();
+  const router = useRouter();
+  const [cookies, setCookie] = useCookies(["portfolio"]);
 
   /* handle submit */
-  const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
+  const onHandleSubmit = handleSubmit(async (data) => {
+    try {
+      await Login(data);
+    } catch (error) {
+      toast.error("Login failed");
+    }
   });
+
+  useEffect(() => {
+    if (data) {
+      toast.success("Login success");
+      router.push("/dashboard");
+      setCookie("portfolio", data?.data?.token, {
+        path: "/", // The cookie will be available in all pages
+      });
+    }
+
+    if (error) {
+      toast.error(error?.data?.message, {});
+      console.log(error);
+    }
+  }, [data, error, router, setCookie]);
 
   return (
     <>
@@ -22,8 +49,8 @@ const LoginPage = (props: Props) => {
         <title>Login - Ashik portfolio</title>
       </Head>
       <div className="grid place-items-center py-52 ">
-        <div className="login-wrapper">
-          <form action="" onSubmit={onSubmit}>
+        <div className="login-wrapper w-[20rem]">
+          <form action="" onSubmit={onHandleSubmit}>
             {/* tailwind */}
             <div className="mb-4">
               <label
@@ -78,12 +105,43 @@ const LoginPage = (props: Props) => {
               )}
             </div>
             <div className="flex items-center justify-between">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-              >
-                Sign In
-              </button>
+              {isLoading ? (
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center gap-2"
+                  type="button"
+                  disabled
+                >
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8z"
+                    ></path>
+                  </svg>
+                  Loading...
+                </button>
+              ) : (
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  type="submit"
+                >
+                  Sign In
+                </button>
+              )}
+
               <a
                 className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                 href="#"
