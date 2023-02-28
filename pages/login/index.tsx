@@ -1,4 +1,5 @@
 import { useLoginMutation } from "@/apis/authenticationApi";
+import { useAppContext } from "@/context/AppContext";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -17,7 +18,8 @@ const LoginPage = (props: Props) => {
   } = useForm();
   const [Login, { data, isLoading, error }] = useLoginMutation<any>();
   const router = useRouter();
-  const [cookies, setCookie] = useCookies(["portfolio"]);
+  const [cookies, setCookies] = useCookies(["portfolio"]);
+  const { setCookie } = useAppContext();
 
   /* handle submit */
   const onHandleSubmit = handleSubmit(async (data) => {
@@ -31,17 +33,20 @@ const LoginPage = (props: Props) => {
   useEffect(() => {
     if (data) {
       toast.success("Login success");
-      router.push("/dashboard");
-      setCookie("portfolio", data?.data?.token, {
-        path: "/", // The cookie will be available in all pages
+      setCookie(data?.data?.token);
+      setCookies("portfolio", data?.data?.token, {
+        path: "/",
+        maxAge: 3600, // Expires after 1hr
+        sameSite: true,
       });
+      router.push("/dashboard");
     }
 
     if (error) {
       toast.error(error?.data?.message, {});
       console.log(error);
     }
-  }, [data, error, router, setCookie]);
+  }, [data, error, router, setCookie, setCookies]);
 
   return (
     <>

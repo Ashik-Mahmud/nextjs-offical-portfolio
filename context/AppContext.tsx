@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import axios from "axios";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import useCookies from "react-cookie/cjs/useCookies";
 const AppContext = createContext<any | null>({});
 
 type Props = {
@@ -6,10 +8,48 @@ type Props = {
 };
 
 const AppContextLayout = ({ children }: Props) => {
-  const [auth, setAuth] = useState(true);
+  const [cookies] = useCookies(["portfolio"]);
+  const [isAuth, setIsAuth] = useState(true);
+  const [currentUser, setCurrentUser] = useState<any | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [cookie, setCookie] = useState(null);
+
+  /* call api for get the current login user */
+  const getCurrentUser = async () => {
+    try {
+      setIsLoading(true);
+      const { data } = await axios.get("/api/auth/me", {
+        headers: {
+          Authorization: `Bearer ${cookie || cookies?.portfolio}`,
+        },
+      });
+      setCurrentUser(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (cookies?.portfolio || cookie) {
+      setCookie(cookie || cookies?.portfolio);
+      getCurrentUser();
+    }
+  }, [cookies, cookie]);
+
+  useEffect(() => {
+    if (currentUser?._id) {
+      setIsAuth(true);
+    } else {
+      setIsAuth(false);
+    }
+  }, [currentUser]);
+
   return (
     <>
-      <AppContext.Provider value={{ auth }}>{children}</AppContext.Provider>
+      <AppContext.Provider value={{ isAuth, setCookie, isLoading }}>
+        {children}
+      </AppContext.Provider>
     </>
   );
 };

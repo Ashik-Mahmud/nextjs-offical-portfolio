@@ -2,7 +2,8 @@ import { useAppContext } from "@/context/AppContext";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import { BiGridAlt } from "react-icons/bi";
 import Sidebar from "./Sidebar";
 
@@ -11,8 +12,24 @@ type Props = {
 };
 
 const DashboardLayout = ({ children }: Props) => {
-  const { auth } = useAppContext();
-  console.log(auth);
+  const { isAuth, isLoading } = useAppContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoading) return;
+    if (!isAuth) {
+      router.push("/login");
+    }
+
+    return () => {};
+  }, [isAuth, router]);
+
+  console.log(isAuth, isLoading);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <Head>

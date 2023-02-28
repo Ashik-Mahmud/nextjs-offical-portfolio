@@ -10,6 +10,7 @@ const VerifyToken = (
   if (!token) {
     return res.status(403).json({ auth: false, message: "No token provided." });
   }
+
   jwt.verify(
     token as string,
     process.env.JWT_SECRET as string,
