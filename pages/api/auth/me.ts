@@ -10,11 +10,9 @@ apiRoute.get(async (req: NextApiRequest | any, res: NextApiResponse) => {
 
   try {
     const user = await User.findById(userId, { password: 0 });
-
     if (!user) {
       return res.status(404).json({ message: "No user found." });
     }
-
     res.status(200).json(user);
   } catch (err: any) {
     res.status(500).json({ message: err.message });

@@ -21,8 +21,6 @@ const DashboardLayout = ({ children }: Props) => {
 
   const [cookie, setCookies] = useCookies(["portfolio"]);
 
-  console.log(isLoading, currentUser);
-
   useEffect(() => {
     if (!cookie?.portfolio) {
       router.push("/login");

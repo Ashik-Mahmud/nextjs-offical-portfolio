@@ -26,13 +26,16 @@ apiRoute.post(async (req: NextApiRequest | any, res: NextApiResponse) => {
   };
 
   if (file) {
-    await deleteImage(home.heroImage.url, "home");
+    if (home?.heroImage.public_id)
+      await deleteImage(home?.heroImage.public_id, "home");
+
     const image = await uploadImage(file.path, "home");
+
     heroImage.url = image.secure_url;
     heroImage.public_id = image.public_id;
   } else {
-    heroImage.url = home.heroImage.url;
-    heroImage.public_id = home.heroImage.public_id;
+    heroImage.url = home?.heroImage.url;
+    heroImage.public_id = home?.heroImage.public_id;
   }
 
   if (home) {
@@ -57,6 +60,7 @@ apiRoute.post(async (req: NextApiRequest | any, res: NextApiResponse) => {
       heroImage,
       ...data,
     });
+
     await newHome.save();
     return res.json({
       success: true,

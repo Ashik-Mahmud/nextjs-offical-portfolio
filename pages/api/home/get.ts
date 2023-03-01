@@ -6,8 +6,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 apiRoute.use(VerifyToken);
 apiRoute.get(async (req: NextApiRequest | any, res: NextApiResponse) => {
-  const home = await Home.find({ user: req.userId });
-  res.status(200).json({ home });
+  const home = await Home.findOne({ user: req.userId });
+  res.status(200).json(home);
 });
 
 export default connectDB(apiRoute);
