@@ -35,7 +35,7 @@ const AboutPage = (props: Props) => {
     const { image, ...other } = data;
 
     /* check if image more than 5 mb */
-    if (image[0].size > 5000000) {
+    if (image[0]?.size > 5000000) {
       alert("Image size must be less than 5 mb");
       return;
     }
@@ -83,7 +83,6 @@ const AboutPage = (props: Props) => {
                 {...register("name")}
                 id="name"
                 className="w-4/5 border outline-none p-3 rounded"
-                defaultValue={"Ashik Mahmud"}
               />
             </div>
             <div className="flex items-center gap-2 justify-between">
@@ -93,7 +92,6 @@ const AboutPage = (props: Props) => {
                 {...register("tagline")}
                 id="tagline"
                 className="w-4/5 border outline-none p-3 rounded"
-                defaultValue={"Web & MERN Stack Developer based in Bangladesh"}
               />
             </div>
             <div className="flex items-center gap-2 justify-between">
@@ -145,9 +143,6 @@ const AboutPage = (props: Props) => {
                 {...register("biography")}
                 id="biography"
                 className="w-4/5 border outline-none p-3 rounded"
-                defaultValue={
-                  "Doing work for money and love. Being consider to take otherwise and more expensive way"
-                }
               />
             </div>
             <div className="flex items-center gap-2 justify-between">
@@ -157,9 +152,6 @@ const AboutPage = (props: Props) => {
                 {...register("contact")}
                 id="contact"
                 className="w-4/5 border outline-none p-3 rounded"
-                defaultValue={
-                  "Dhaka, Bangladesh | ashikmahmud187@gmail.com | +8801610849175"
-                }
               />
             </div>
             <div className="flex items-center gap-2 justify-between">
@@ -169,9 +161,6 @@ const AboutPage = (props: Props) => {
                 {...register("services")}
                 id="services"
                 className="w-4/5 border outline-none p-3 rounded"
-                defaultValue={
-                  "Frontend Development, Backend Development, Full Stack Development, Web App Developer"
-                }
               />
             </div>
             <div className="flex items-center gap-2 justify-between">
@@ -181,7 +170,6 @@ const AboutPage = (props: Props) => {
                 {...register("yOfExp")}
                 id="yOfExp"
                 className="w-4/5 border outline-none p-3 rounded"
-                defaultValue={"2+"}
               />
             </div>
             <div className="flex items-center gap-2 justify-between">
@@ -191,7 +179,6 @@ const AboutPage = (props: Props) => {
                 {...register("satisfiedClient")}
                 id="satisfiedClient"
                 className="w-4/5 border outline-none p-3 rounded"
-                defaultValue={"100%"}
               />
             </div>
             <div className="flex items-center gap-2 justify-between">
@@ -201,7 +188,6 @@ const AboutPage = (props: Props) => {
                 {...register("projectDone")}
                 id="done-project"
                 className="w-4/5 border outline-none p-3 rounded"
-                defaultValue={"200+"}
               />
             </div>
             <div className="flex items-center gap-2 justify-between">
@@ -211,7 +197,6 @@ const AboutPage = (props: Props) => {
                 {...register("worldWideClient")}
                 id="worldwide-client"
                 className="w-4/5 border outline-none p-3 rounded"
-                defaultValue={"20+"}
               />
             </div>
           </div>

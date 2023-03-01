@@ -1,6 +1,5 @@
 import { useAppContext } from "@/context/AppContext";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
@@ -77,15 +76,15 @@ const DashboardLayout = ({ children }: Props) => {
 
             <div className="flex items-center gap-2 mr-4">
               <div className="flex items-center gap-2">
-                <Image
-                  src="/assets/images/me.jpg"
+                <img
+                  src={currentUser?.avatar?.url}
                   alt="profile"
                   className="w-8 h-8 rounded-full object-cover"
                   width={40}
                   height={40}
                 />
                 <div className="flex flex-col items-start">
-                  <span className="text-sm font-bold">Ashik Mahmud</span>
+                  <span className="text-sm font-bold">{currentUser?.name}</span>
                   <span className="text-xs text-gray-500">Admin</span>
                 </div>
               </div>
