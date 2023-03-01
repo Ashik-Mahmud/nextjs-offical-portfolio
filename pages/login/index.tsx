@@ -1,4 +1,5 @@
 import { useLoginMutation } from "@/apis/authenticationApi";
+import ScreenLoading from "@/components/ScreenLoading";
 import { useAppContext } from "@/context/AppContext";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -19,7 +20,7 @@ const LoginPage = (props: Props) => {
   const [Login, { data, isLoading, error }] = useLoginMutation<any>();
   const router = useRouter();
   const [cookies, setCookies] = useCookies(["portfolio"]);
-  const { setCookie } = useAppContext();
+  const { setCookie, currentUser, isLoading: authLoading } = useAppContext();
 
   /* handle submit */
   const onHandleSubmit = handleSubmit(async (data) => {
@@ -46,8 +47,21 @@ const LoginPage = (props: Props) => {
       toast.error(error?.data?.message, {});
       console.log(error);
     }
-  }, [data, error, router, setCookie, setCookies]);
+  }, [data, error]);
 
+  useEffect(() => {
+    if (cookies?.portfolio) {
+      router.push("/dashboard");
+    } else {
+      router.push("/login");
+    }
+  }, []);
+
+  console.log(authLoading, currentUser);
+
+  if (authLoading) {
+    return <ScreenLoading />;
+  }
   return (
     <>
       <Head>

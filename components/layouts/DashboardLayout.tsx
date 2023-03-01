@@ -5,31 +5,39 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { BiGridAlt } from "react-icons/bi";
+import ScreenLoading from "../ScreenLoading";
 import Sidebar from "./Sidebar";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 type Props = {
   children: React.ReactNode;
 };
 
 const DashboardLayout = ({ children }: Props) => {
-  const { isAuth, isLoading } = useAppContext();
+  const { currentUser, isLoading, setCurrentUser } = useAppContext();
   const router = useRouter();
 
+  console.log(isLoading, currentUser);
+
   useEffect(() => {
-    if (isLoading) return;
-    if (!isAuth) {
+    if (!currentUser?._id) {
       router.push("/login");
     }
 
     return () => {};
-  }, [isAuth, router]);
+  }, [currentUser, router]);
 
-  console.log(isAuth, isLoading);
+  /* handle logout */
+  const handleLogout = () => {
+    cookies.remove("portfolio");
+    router.push("/login");
+    setCurrentUser(null);
+  };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <ScreenLoading />;
   }
-
   return (
     <div>
       <Head>
@@ -82,7 +90,10 @@ const DashboardLayout = ({ children }: Props) => {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <button className="bg-red-100 text-red-500  px-2 py-1 rounded-md">
+                <button
+                  className="bg-red-100 text-red-500  px-2 py-1 rounded-md"
+                  onClick={handleLogout}
+                >
                   Logout
                 </button>
               </div>

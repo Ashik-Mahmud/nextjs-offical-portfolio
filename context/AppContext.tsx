@@ -35,6 +35,7 @@ const AppContextLayout = ({ children }: Props) => {
       setCookie(cookie || cookies?.portfolio);
       getCurrentUser();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cookies, cookie]);
 
   useEffect(() => {
@@ -47,7 +48,9 @@ const AppContextLayout = ({ children }: Props) => {
 
   return (
     <>
-      <AppContext.Provider value={{ isAuth, setCookie, isLoading }}>
+      <AppContext.Provider
+        value={{ isAuth, setCookie, isLoading, currentUser, setCurrentUser }}
+      >
         {children}
       </AppContext.Provider>
     </>
