@@ -4,10 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { useCookies } from "react-cookie";
 import { BiGridAlt } from "react-icons/bi";
+import Cookies from "universal-cookie";
 import ScreenLoading from "../ScreenLoading";
 import Sidebar from "./Sidebar";
-import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
 type Props = {
@@ -18,15 +19,16 @@ const DashboardLayout = ({ children }: Props) => {
   const { currentUser, isLoading, setCurrentUser } = useAppContext();
   const router = useRouter();
 
+  const [cookie, setCookies] = useCookies(["portfolio"]);
+
   console.log(isLoading, currentUser);
 
   useEffect(() => {
-    if (!currentUser?._id) {
+    if (!cookie?.portfolio) {
       router.push("/login");
     }
-
     return () => {};
-  }, [currentUser, router]);
+  }, [cookie, router]);
 
   /* handle logout */
   const handleLogout = () => {

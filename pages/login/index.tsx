@@ -40,22 +40,19 @@ const LoginPage = (props: Props) => {
         maxAge: 3600, // Expires after 1hr
         sameSite: true,
       });
-      router.push("/dashboard");
     }
 
     if (error) {
       toast.error(error?.data?.message, {});
       console.log(error);
     }
-  }, [data, error]);
+  }, [data, error, router]);
 
   useEffect(() => {
     if (cookies?.portfolio) {
       router.push("/dashboard");
-    } else {
-      router.push("/login");
     }
-  }, []);
+  }, [cookies, router]);
 
   console.log(authLoading, currentUser);
 
