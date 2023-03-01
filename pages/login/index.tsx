@@ -46,6 +46,7 @@ const LoginPage = (props: Props) => {
       toast.error(error?.data?.message, {});
       console.log(error);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, error, router]);
 
   useEffect(() => {
